@@ -125,7 +125,7 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 fetch('/api/config').then(r=>r.ok?r.json():Promise.reject()).then(cfg=>{WHATSAPP_NUMBER=(cfg.whatsappNumber||'').replace(/\\D/g,'');}).catch(()=>{});
 function openWhatsApp(message){const number=nextWhatsAppNumber();window.open('https://wa.me/'+number+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');}
 document.getElementById('waFloat').addEventListener('click',e=>{e.preventDefault();openWhatsApp('Hello Shamruth Eco Assets, I would like to enquire about a stay. Please share availability and rates.');});
-document.getElementById('waContact').addEventListener('click',e=>{e.preventDefault();openWhatsApp('Hello Shamruth Eco Assets, I would like to enquire about booking a cottage in Kodaikanal.');});
+document.getElementById('waContact')?.addEventListener('click',e=>{e.preventDefault();openWhatsApp('Hello Shamruth Eco Assets, I would like to enquire about booking a cottage in Kodaikanal.');});
 document.querySelectorAll('[data-cottage]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('cottage').value=a.dataset.cottage;}));
 const checkin=document.getElementById('checkin'),checkout=document.getElementById('checkout');
 const today=new Date();const localToday=new Date(today.getTime()-today.getTimezoneOffset()*60000).toISOString().slice(0,10);checkin.min=localToday;checkout.min=localToday;
